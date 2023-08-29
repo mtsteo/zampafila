@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015984838016",
+    "project_id": "zampafila",
+    "storage_bucket": "zampafila.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015984838016:android:606fff197a54c639a0dd65",
+        "android_client_info": {
+          "package_name": "com.zampa.fila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015984838016-5l65eoe49ou7j8pqd559m778uuv687m5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANYCeKyaPnWJrcgbJu1QFO3UAbtKDfKNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015984838016-5l65eoe49ou7j8pqd559m778uuv687m5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
