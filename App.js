@@ -17,8 +17,17 @@ import {
 import db from './firebase'
 
 export default function App() {
-  const q = query(collection(db, 'motorista'))
-  const querySnapShot
+
+  async function getdata() {
+    const q = query(collection(db, 'motorista'))
+
+    const querySnapShot = await getDocs(q);
+    querySnapShot.forEach((doc) => {
+      console.log(doc.data())
+    })
+  }
+
+  // getdata()
 
   return (
     <View style={styles.container}>
