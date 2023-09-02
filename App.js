@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   doc,
   onSnapshot,
@@ -15,8 +17,9 @@ import {
   limit,
 } from "firebase/firestore";
 import db from "./firebase";
-
 import Header from "./components/Header";
+import EmEspera from "./screens/emEspera/EmEspera";
+import Atendidos from "./screens/atendidos/Atendidos";
 
 export default function App() {
   async function getdata() {
@@ -27,17 +30,18 @@ export default function App() {
       console.log(doc.data());
     });
   }
-
-  //  getdata()
+  const Tab = createBottomTabNavigator();
 
   return (
     <>
-      <Header></Header>
-      <View style={styles.container}>
-        <Text>Será que vai da certo?</Text>
-        <Text>{process.env.APP_APYKEY}</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Header />
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={{headerShown:false}}>
+          <Tab.Screen name="Em espera" component={EmEspera} />
+          <Tab.Screen name="Atendidos" component={Atendidos} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </>
   );
 }
