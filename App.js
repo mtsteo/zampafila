@@ -3,17 +3,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Header from "./components/Header";
 import EmEspera from "./screens/emEspera/EmEspera";
-import Atendidos from "./screens/atendidos/Atendidos";
+import Descarregados from "./screens/descarregados/Descarregados";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "./styles/colors";
+import { OpenProvider } from "./context/OpenContext";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
 
   return (
     <>
-        <Header />
-        <StatusBar style="auto" />
+      <Header />
+      <StatusBar style="auto" />
+      <OpenProvider>
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={{
@@ -37,7 +39,7 @@ export default function App() {
             />
             <Tab.Screen
               name="Descarregados"
-              component={Atendidos}
+              component={Descarregados}
               options={{
                 tabBarInactiveTintColor: colors.mainColors.secundary,
                 tabBarActiveBackgroundColor: colors.mainColors.primary,
@@ -48,6 +50,7 @@ export default function App() {
             />
           </Tab.Navigator>
         </NavigationContainer>
+      </OpenProvider>
     </>
   );
 }

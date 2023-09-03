@@ -1,6 +1,6 @@
-import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import React, { useEffect, useState } from "react";
-import FilaItem from "../../components/FilaItem";
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import FilaItem from '../../components/FilaItem'
 import {
   doc,
   onSnapshot,
@@ -17,53 +17,45 @@ import {
 } from "firebase/firestore";
 import db from "../../firebase";
 
-export default function EmEspera() {
-  const [espera, setEspera] = useState([]);
 
-  async function getEmEspera() {
+export default function Descarregados() {
+  const [Descarregados, setDescarregados] = useState([])
+
+   async function getDescarregados() {
     try {
-      const data = [];
+      const data = []
       const q = query(
         collection(db, "fila"),
-        where("status", "==", "AGUARDANDO")
+        where("status", "==", "DESCARREGADO")
       );
-
+  
       const querySnapShot = await getDocs(q);
       querySnapShot.forEach((doc) => {
         data.push(doc.data());
       });
-
-      setEspera(data)
+      setDescarregados(data)
     } catch (error) {
       console.log(error);
     }
   }
-  
-
   useEffect(() => {
-    getEmEspera()
+    getDescarregados()
   }, [])
-
   return (
     <SafeAreaView>
-      <ScrollView style={style.view}>{espera.map((a,index)=>{
+      <ScrollView style={style.view}>{Descarregados.map((a,index)=>{
         return(
           <FilaItem key={index} data={a} position ={index}/>
         )
       })}</ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  view: {
-    marginLeft: "1%",
-    marginRight: "1%",
-    marginTop: "2%",
-  },
-});
+  container:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:'center'
+  }
+})
