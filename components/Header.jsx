@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Platform
 } from "react-native";
 import React from "react";
 import Colors from "../styles/colors";
@@ -26,7 +27,7 @@ export default function Header() {
 const style = StyleSheet.create({
   container: {
     backgroundColor: Colors.mainColors.primary,
-    height: statusBarHeight,
+    height: Platform.OS === "android"? statusBarHeight : "25%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

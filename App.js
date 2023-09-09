@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Header from "./components/Header";
@@ -9,12 +8,13 @@ import colors from "./styles/colors";
 import { OpenProvider } from "./context/OpenContext";
 
 export default function App() {
+
+
   const Tab = createBottomTabNavigator();
 
   return (
     <>
       <Header />
-      <StatusBar style="auto" />
       <OpenProvider>
         <NavigationContainer>
           <Tab.Navigator
@@ -54,3 +54,4 @@ export default function App() {
     </>
   );
 }
+
